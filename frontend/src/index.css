@@ -61,9 +61,10 @@ h2 {
   color: white;
 }
 form {
+  position: absolute;
   display: inline;
-  top: 0;
-  margin-left: 20%;
+  top: 0.8rem;
+  margin-left: 40%;
 }
 
 form input,
@@ -75,17 +76,17 @@ form button {
   font-size: 2rem;
 }
 form input {
-  min-width: 30%;
+  min-width: 40%;
 }
 form button {
   cursor: pointer; /*mouse looks as pointer when is over the button*/
   color: white;
   background-color: rgb(72, 69, 77, 0.4);
-  transition: all 2s;
+  transition: all 1s;
 }
 form button:hover {
-  color: white;
-  background-color: rgb(72, 69, 77, 0.7);
+  color: black;
+  background-color: rgba(72, 69, 77, 0.185);
 }
 img {
   width: 100%;
@@ -94,11 +95,9 @@ img {
 }
 .movies {
   margin-left: 5rem;
-  display: Inline-grid;
+  display: inline-grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   padding: 2rem 0;
-  row-gap: 1rem;
-  column-gap: 1rem;
 }
 .movie-info {
   height: 500px;
@@ -109,4 +108,40 @@ img {
   box-shadow: 0px 0px 0px 5px rgba(0, 0, 0, 0.075);
   border-radius: 15px;
   color: white;
+}
+#movie_area {
+  display: Inline-grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  padding: 2rem 0;
+}
+#movie {
+  display: flex;
+  font-size: 1.3rem;
+  color: white;
+  justify-content: space-between;
+}
+#one_img {
+  margin-left: 5rem;
+  min-height: 370px;
+  min-width: 300px;
+  object-fit: fill;
+}
+
+#details {
+  overflow: scroll;
+  scroll-behavior: smooth;
+  min-width: 400px;
+  max-height: 370px;
+  font-size: 1.3rem;
+  background-color: rgba(53, 42, 42, 0.308);
+  border-radius: 0 8px 8px 0;
+  padding: 0.5rem 0.3rem;
+  color: white;
+}
+#details::-webkit-scrollbar {
+  display: none;
+}
+
+#details p {
+  margin-top: 1rem;
 }

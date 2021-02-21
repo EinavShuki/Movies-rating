@@ -1,58 +1,83 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import Rating from "../components/Rating/Rating";
-const HomeScreen = () => {
-  const [q, setQuery] = useState("new");
-  const [movies, setMovies] = useState(null);
+import MoviesBox from "../components/MoviesBox";
 
-  let yaer = new Date().getFullYear();
+const HomeScreen = () => {
+  const [q, setQuery] = useState(JSON.parse(localStorage.getItem("query")));
+  const [movies, setMovies] = useState(null);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  let textInput = React.createRef();
+
+  const searchHandler = (e) => {
+    e.preventDefault();
+    // console.log(textInput.current.value);
+    setQuery(textInput.current.value);
+    console.log(q);
+    textInput.current.value = "";
+  };
+
   const API_KEY = "a505e764";
-  const URL = `http://www.omdbapi.com/?apikey=${API_KEY}&s=${q}&y=${yaer}&type=movie`;
+  const URL = `http://www.omdbapi.com/?apikey=${API_KEY}&s=${q}&type=movie`;
+
+  useEffect(() => {
+    localStorage.setItem("query", JSON.stringify(q));
+  });
 
   useEffect(async () => {
     try {
+      setLoading(true);
       const config = {
         headers: { "Content-Type": "application/json" },
       };
       const { data } = await axios.get(URL, config);
       console.log("data", data);
+      if (data.Response === "False") setError(data.Error);
       setMovies(data.Search);
     } catch (err) {
       console.log(err);
     }
+    setLoading(false);
+    setQuery(JSON.parse(localStorage.getItem("query")));
   }, [q]);
 
-  console.log(movies);
+  // console.log(movies);
   return (
     <>
-      <h1 style={{ textAlign: "center", fontSize: "4rem" }}>
-        Welcom to Movies Rating
-      </h1>
-      {movies && (
-        <div>
-          {movies.map((movie, index) => (
-            <div className="movies" key={index}>
-              <Link to="/movie" className="movie-info">
-                <img
-                  alt={movie.Title}
-                  src={
-                    movie.Poster === "N/A"
-                      ? "https://placehold.it/198x264&text=Image+Not+Found"
-                      : movie.Poster
-                  }
-                />
-                <p>
-                  {movie.Title} | {movie.Year}
-                </p>
-                <Rating value="4" />
-                <Link to="/movie" style={{ fontSize: "1.5rem" }}>
-                  To all reviews
-                </Link>
-              </Link>
-            </div>
-          ))}
-        </div>
+      <form rel="search">
+        <input placeholder="Movie name" type="text" ref={textInput} />{" "}
+        <button onClick={searchHandler}>
+          <i className="fas fa-search"></i>
+        </button>
+      </form>
+      {loading ? (
+        <h1
+          style={{
+            marginTop: "2rem",
+            fontSize: "3rem",
+            textAlign: "center",
+          }}
+        >
+          Loading...
+        </h1>
+      ) : !error ? (
+        <>
+          <h1 style={{ textAlign: "center", fontSize: "4rem" }}>
+            Welcom to Movies Rating
+          </h1>
+          {movies && <MoviesBox movies={movies} />}
+        </>
+      ) : (
+        <h1
+          style={{
+            marginTop: "2rem",
+            backgroundColor: "red",
+            fontSize: "3rem",
+            textAlign: "center",
+          }}
+        >
+          {error}
+        </h1>
       )}
     </>
   );
