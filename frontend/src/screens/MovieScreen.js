@@ -7,18 +7,21 @@ const MovieScreen = ({ match }) => {
   const [movie, setMovie] = useState({});
   const [rating, setRating] = useState(5);
 
-  useEffect(async () => {
-    try {
-      const config = {
-        headers: { "Content-Type": "application/json" },
-      };
-      const { data } = await axios.get(URL, config);
-      console.log(data);
-      setMovie(data);
-      setRating(movie.Ratings[0].Value.split("/", 1)[0]);
-    } catch (err) {
-      console.log(err);
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const config = {
+          headers: { "Content-Type": "application/json" },
+        };
+        const { data } = await axios.get(URL, config);
+        console.log(data);
+        setMovie(data);
+        setRating(movie.Ratings[0].Value.split("/", 1)[0]);
+      } catch (err) {
+        console.log(err);
+      }
     }
+    fetchData();
   }, []);
   //   console.log(movie);
   //   console.log(rating / 2);

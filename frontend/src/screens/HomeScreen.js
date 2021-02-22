@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import MoviesBox from "../components/MoviesBox";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const HomeScreen = () => {
   const [q, setQuery] = useState(JSON.parse(localStorage.getItem("query")));
@@ -24,19 +27,23 @@ const HomeScreen = () => {
     localStorage.setItem("query", JSON.stringify(q));
   });
 
-  useEffect(async () => {
-    try {
-      setLoading(true);
-      const config = {
-        headers: { "Content-Type": "application/json" },
-      };
-      const { data } = await axios.get(URL, config);
-      console.log("data", data);
-      if (data.Response === "False") setError(data.Error);
-      setMovies(data.Search);
-    } catch (err) {
-      console.log(err);
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        setLoading(true);
+        const config = {
+          headers: { "Content-Type": "application/json" },
+        };
+        const { data } = await axios.get(URL, config);
+        console.log("data", data);
+        console.log("data", typeof data);
+        if (data.Response === "False") setError(data.Error);
+        setMovies(data.Search);
+      } catch (err) {
+        console.log(err);
+      }
     }
+    fetchData();
     setLoading(false);
     setQuery(JSON.parse(localStorage.getItem("query")));
   }, [q]);
