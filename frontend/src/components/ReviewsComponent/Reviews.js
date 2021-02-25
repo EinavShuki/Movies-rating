@@ -54,12 +54,15 @@ const Reviews = ({ id }) => {
                 />
                 <div className="review_q">
                   <img src="\img\quotes-right.png" id="left_q" />
-                  <h3
+                  <h4
                     className="fadeIn"
-                    style={{ textAlign: "center", padding: "0.3rem" }}
+                    style={{
+                      textAlign: "center",
+                      padding: "0.5rem",
+                    }}
                   >
                     {revToShow[index].comment}
-                  </h3>
+                  </h4>
                   <img src="\img\quotes-right.png" id="right_q" />
                 </div>
                 <p

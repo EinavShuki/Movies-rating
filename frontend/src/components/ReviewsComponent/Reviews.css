@@ -36,7 +36,8 @@
   position: absolute;
   width: 1.5rem;
   transform: scale(-1);
-  left: 7%;
+  left: 5%;
+  top: 27%;
 }
 #review_p {
   overflow: hidden;
@@ -50,6 +51,7 @@
   animation-duration: 10s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
+  animation-iteration-count: infinite;
   -webkit-animation-iteration-count: infinite;
 }
 @-webkit-keyframes fadeIn {

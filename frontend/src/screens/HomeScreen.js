@@ -3,7 +3,7 @@ import axios from "axios";
 import MoviesBox from "../components/MoviesBox";
 
 const HomeScreen = () => {
-  const [q, setQuery] = useState(JSON.parse(localStorage.getItem("query")));
+  const [q, setQuery] = useState("woman");
   const [movies, setMovies] = useState(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
@@ -50,7 +50,7 @@ const HomeScreen = () => {
     fetchMovies();
     q
       ? localStorage.setItem("query", JSON.stringify(q))
-      : localStorage.setItem("query", JSON.stringify("family"));
+      : localStorage.setItem("query", JSON.stringify("woman"));
   }, [q]);
 
   return (
@@ -71,7 +71,26 @@ const HomeScreen = () => {
         <div className="loader"></div>
       ) : error === "" ? (
         <>
-          <h1>Welcom To Movies Rating</h1>
+          <div className="title">
+            <span>W</span>
+            <span>e</span>
+            <span>l</span>
+            <span>c</span>
+            <span>o</span>
+            <span>m</span>
+            <span>e</span> <span>t</span>
+            <span>o</span> <span>M</span>
+            <span>o</span>
+            <span>v</span>
+            <span>i</span>
+            <span>e</span>
+            <span>s</span> <span>R</span>
+            <span>a</span>
+            <span>t</span>
+            <span>i</span>
+            <span>n</span>
+            <span>g</span>
+          </div>
           {movies && <MoviesBox movies={movies} />}
         </>
       ) : (

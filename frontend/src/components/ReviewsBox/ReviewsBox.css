@@ -1,6 +1,6 @@
 #form_rev {
   position: relative;
-  top: 7rem;
+  top: 7.7rem;
 }
 label {
   font-size: 1.5rem;
@@ -57,7 +57,7 @@ textarea::-webkit-scrollbar {
 }
 #submit:hover {
   color: black;
-  background-color: rgba(72, 150, 95, 0.24);
+  background-color: rgba(26, 197, 77, 0.63);
 }
 #submit_ico {
   width: 5%;

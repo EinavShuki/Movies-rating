@@ -5,10 +5,7 @@ const MoviesBox = ({ movies }) => {
     <div>
       {movies.map((movie, index) => (
         <div className="movies zoomIn" key={index}>
-          <Link
-            to={`/movie/${movie.imdbID}`}
-            style={{ fontSize: "1.5rem", color: "black" }}
-          >
+          <Link className="arl" to={`/movie/${movie.imdbID}`}>
             To all reviews
           </Link>
           <div className="movie-info">
