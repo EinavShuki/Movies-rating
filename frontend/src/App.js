@@ -9,8 +9,10 @@ function App() {
     <Router>
       <Header />
       <main>
-        <Route path="/" component={HomeScreen} exact />
-        <Route path="/movie/:id" component={MovieScreen} exact />
+        <>
+          <Route path="/" component={HomeScreen} exact />
+          <Route path="/movie/:id" component={MovieScreen} exact />
+        </>
       </main>
       <Footer />
     </Router>

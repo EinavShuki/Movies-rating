@@ -1,14 +1,19 @@
-const express = require("express");
-const dotenv = require("dotenv");
-const app = express();
-dotenv.config();
-app.use(express.json());
-const API_KEY = "a505e764";
-const URL = `http://www.omdbapi.com/?apikey=${API_KEY}&s=${q}&type=movie`;
+import express from "express";
+import dotenv from "dotenv";
+import moviesRoutes from "./router/moviesRoutes.js";
+import connectDB from "./config/db.js";
 
-app.get("/", (req, res) => {
-  res.send("hello");
-});
+const app = express();
+
+dotenv.config();
+
+connectDB();
+
+app.use(express.json());
+
+console.log("in server");
+
+app.use("/api/movies", moviesRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () =>

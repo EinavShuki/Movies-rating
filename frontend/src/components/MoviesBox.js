@@ -4,8 +4,14 @@ const MoviesBox = ({ movies }) => {
   return (
     <div>
       {movies.map((movie, index) => (
-        <div className="movies" key={index}>
-          <Link to={`/movie/${movie.imdbID}`} className="movie-info">
+        <div className="movies zoomIn" key={index}>
+          <Link
+            to={`/movie/${movie.imdbID}`}
+            style={{ fontSize: "1.5rem", color: "black" }}
+          >
+            To all reviews
+          </Link>
+          <div className="movie-info">
             <img
               alt={movie.Title}
               src={
@@ -14,13 +20,10 @@ const MoviesBox = ({ movies }) => {
                   : movie.Poster
               }
             />
-            <p>
+            <p style={{ marginBottom: "1rem" }}>
               {movie.Title} | {movie.Year}
             </p>
-            <Link to={`/movie/${movie.imdbID}`} style={{ fontSize: "1.5rem" }}>
-              To all reviews
-            </Link>
-          </Link>
+          </div>
         </div>
       ))}
     </div>

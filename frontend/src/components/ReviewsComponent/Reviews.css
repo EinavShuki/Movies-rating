@@ -1,0 +1,70 @@
+#star {
+  position: absolute;
+  z-index: 1;
+  width: 18%;
+  border: rgba(255, 255, 255, 0.349) solid 3px;
+  padding: 0.5rem;
+  /*text-align: center;*/
+  border-radius: 80px;
+  transform: translateX(-50%);
+  top: -17%;
+}
+
+.reviews_box {
+  position: relative;
+  height: 40vh;
+  width: 40vw;
+  font-size: 1.8rem;
+  background-color: rgba(255, 255, 255, 0.548);
+  -webkit-box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.36);
+  -moz-box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.36);
+  box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.36);
+  border-radius: 15px;
+  color: black;
+  margin: 7rem 0 0 8rem;
+  text-align: center;
+  padding: 5.6rem 2rem;
+}
+
+#right_q {
+  position: absolute;
+  width: 1.5rem;
+  position: relative;
+  right: -40%;
+}
+#left_q {
+  position: absolute;
+  width: 1.5rem;
+  transform: scale(-1);
+  left: 7%;
+}
+#review_p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 10s;
+  animation-duration: 10s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-iteration-count: infinite;
+}
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}

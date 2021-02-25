@@ -1,77 +1,77 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import MoviesBox from "../components/MoviesBox";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 const HomeScreen = () => {
   const [q, setQuery] = useState(JSON.parse(localStorage.getItem("query")));
   const [movies, setMovies] = useState(null);
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [showScroll, setShowScroll] = useState(false);
+
+  const checkScrollTop = () => {
+    if (!showScroll && window.pageYOffset > 400) {
+      setShowScroll(true);
+    } else if (showScroll && window.pageYOffset <= 400) {
+      setShowScroll(false);
+    }
+  };
+
+  window.addEventListener("scroll", checkScrollTop);
+
   let textInput = React.createRef();
 
   const searchHandler = (e) => {
     e.preventDefault();
-    // console.log(textInput.current.value);
     setQuery(textInput.current.value);
-    console.log(q);
     textInput.current.value = "";
   };
 
-  const API_KEY = "a505e764";
-  const URL = `http://www.omdbapi.com/?apikey=${API_KEY}&s=${q}&type=movie`;
-
   useEffect(() => {
-    localStorage.setItem("query", JSON.stringify(q));
-  });
-
-  useEffect(() => {
-    async function fetchData() {
+    setLoading(true);
+    async function fetchMovies() {
       try {
-        setLoading(true);
         const config = {
           headers: { "Content-Type": "application/json" },
         };
-        const { data } = await axios.get(URL, config);
-        console.log("data", data);
-        console.log("data", typeof data);
-        if (data.Response === "False") setError(data.Error);
+        const { data } = await axios.post("/api/movies", { q }, config);
+        console.log(data);
+        if (data.Response === "False") {
+          if (data.Error === "Incorrect IMDb ID.")
+            setError("Cannot find movie");
+          else setError(data.Error);
+        } else setError("");
         setMovies(data.Search);
-      } catch (err) {
-        console.log(err);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
       }
     }
-    fetchData();
-    setLoading(false);
-    setQuery(JSON.parse(localStorage.getItem("query")));
+    fetchMovies();
+    q
+      ? localStorage.setItem("query", JSON.stringify(q))
+      : localStorage.setItem("query", JSON.stringify("family"));
   }, [q]);
 
-  // console.log(movies);
   return (
     <>
-      <form rel="search">
-        <input placeholder="Movie name" type="text" ref={textInput} />{" "}
-        <button onClick={searchHandler}>
+      <form rel="search" id="search_form">
+        <input
+          autoComplete="off"
+          className="search_input"
+          placeholder="Movie name"
+          type="text"
+          ref={textInput}
+        />{" "}
+        <button className="search_btn" onClick={searchHandler}>
           <i className="fas fa-search"></i>
         </button>
       </form>
       {loading ? (
-        <h1
-          style={{
-            marginTop: "2rem",
-            fontSize: "3rem",
-            textAlign: "center",
-          }}
-        >
-          Loading...
-        </h1>
-      ) : !error ? (
+        <div className="loader"></div>
+      ) : error === "" ? (
         <>
-          <h1 style={{ textAlign: "center", fontSize: "4rem" }}>
-            Welcom to Movies Rating
-          </h1>
+          <h1>Welcom To Movies Rating</h1>
           {movies && <MoviesBox movies={movies} />}
         </>
       ) : (
@@ -86,6 +86,13 @@ const HomeScreen = () => {
           {error}
         </h1>
       )}
+      <a href="#" style={{ display: showScroll ? "flex" : "none" }}>
+        <img
+          className="top_btn"
+          src="\img\chevron-upwards-arrow.png"
+          alt="top"
+        />
+      </a>
     </>
   );
 };

@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Rating from "../components/Rating/Rating";
+import ReviewsBox from "../components/ReviewsBox/ReviewsBox.js";
+import Reviews from "../components/ReviewsComponent/Reviews";
 const MovieScreen = ({ match }) => {
-  const API_KEY = "a505e764";
-  const URL = `http://www.omdbapi.com/?apikey=${API_KEY}&i=${match.params.id}&type=movie`;
+  const id = match.params.id;
   const [movie, setMovie] = useState({});
   const [rating, setRating] = useState(5);
+  const [addReview, setAddReview] = useState(false);
+  const [addRevBack, setaddRevBack] = useState("Add a review");
 
   useEffect(() => {
     async function fetchData() {
@@ -13,7 +16,7 @@ const MovieScreen = ({ match }) => {
         const config = {
           headers: { "Content-Type": "application/json" },
         };
-        const { data } = await axios.get(URL, config);
+        const { data } = await axios.get(`/api/movies/${id}`, config);
         console.log(data);
         setMovie(data);
         setRating(movie.Ratings[0].Value.split("/", 1)[0]);
@@ -23,12 +26,16 @@ const MovieScreen = ({ match }) => {
     }
     fetchData();
   }, []);
-  //   console.log(movie);
-  //   console.log(rating / 2);
+  const addReviewHandler = () => {
+    setAddReview((prev) => !prev);
+    setaddRevBack((prev) =>
+      prev === "Add a review" ? "Back" : "Add a review"
+    );
+  };
 
   return (
     <>
-      <div>
+      <div style={{ display: "flex" }}>
         {movie && (
           <div id="movie_area">
             <div id="movie">
@@ -54,6 +61,11 @@ const MovieScreen = ({ match }) => {
             </div>
           </div>
         )}
+        {addReview ? <ReviewsBox id={id} /> : <Reviews id={id} />}
+        <div className="btns_area">
+          <button onClick={addReviewHandler}>{addRevBack}</button>
+          <button>Watch all reviews</button>
+        </div>
       </div>
     </>
   );

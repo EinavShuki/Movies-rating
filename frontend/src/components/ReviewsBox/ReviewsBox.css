@@ -1,0 +1,87 @@
+#form_rev {
+  position: relative;
+  top: 7rem;
+}
+label {
+  font-size: 1.5rem;
+}
+#review_box {
+  position: relative;
+  transform: translateX(50%);
+}
+#rating_area {
+  position: relative;
+  top: -35%;
+}
+#rating {
+  margin: 0.5rem;
+  height: 5vh;
+  width: 11vw;
+  font-size: 1.5rem;
+  border: none;
+}
+
+.name,
+textarea {
+  font-size: 1.5rem;
+  color: rgba(0, 0, 255, 0.616);
+  font-weight: bold;
+  scroll-behavior: smooth;
+  display: block;
+  outline: none;
+  border: 1px solid grey;
+  padding: 0.5rem;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid black;
+  min-width: 40%;
+  width: 100%;
+  resize: none;
+  margin: 0.3rem 0;
+  font-family: "Quicksand", sans-serif;
+}
+textarea {
+  width: 150%;
+}
+
+textarea::-webkit-scrollbar {
+  display: none;
+}
+#submit {
+  margin-top: 0.3rem;
+  padding: 1rem;
+  background-color: rgba(72, 150, 95, 0.418);
+  min-width: 4vw;
+  height: 10%;
+  text-align: center;
+}
+#submit:hover {
+  color: black;
+  background-color: rgba(72, 150, 95, 0.24);
+}
+#submit_ico {
+  width: 5%;
+  position: relative;
+  top: 7rem;
+  right: 4rem;
+}
+
+.loader_submit {
+  border: 16px solid #f3f3f327; /* Light grey */
+  border-top: 16px solid #238bd16c; /* Blue */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  position: absolute;
+  width: 10rem;
+  height: 10rem;
+  left: 80rem;
+  top: 15rem;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
