@@ -1,9 +1,10 @@
 import "./Reviews.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import Rating from "../Rating/Rating";
+import AllReviews from "../AllReviews/AllReviews";
 
-const Reviews = ({ id }) => {
+const Reviews = ({ id, watchAll }) => {
   const [reviews, setReviews] = useState([]);
   const [index, setIndex] = useState(0);
   const [revToShow, setRevToShow] = useState([]);
@@ -33,9 +34,7 @@ const Reviews = ({ id }) => {
   }, []);
 
   useEffect(() => {
-    console.log(reviews.filter((review) => review.comment.length <= 100));
     setRevToShow(reviews.filter((review) => review.comment.length <= 100));
-    console.log(revToShow);
   }, [reviews]);
 
   return (
@@ -45,7 +44,7 @@ const Reviews = ({ id }) => {
         <img src="\img\star.png" id="star" />
         <div className="single_review">
           <div id="review_p">
-            {revToShow.length > 0 ? (
+            {revToShow.length > 1 ? (
               <span>
                 <Rating
                   className="fadeIn"
@@ -83,6 +82,9 @@ const Reviews = ({ id }) => {
             )}
           </div>
         </div>
+      </div>
+      <div id="all_rev_table">
+        {watchAll && <AllReviews reviews={reviews} />}
       </div>
     </>
   );

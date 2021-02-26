@@ -9,6 +9,18 @@ const MovieScreen = ({ match }) => {
   const [rating, setRating] = useState(5);
   const [addReview, setAddReview] = useState(false);
   const [addRevBack, setaddRevBack] = useState("Add a review");
+  const [watchAll, setWatchAll] = useState(false);
+  const [showScroll, setShowScroll] = useState(false);
+
+  const checkScrollTop = () => {
+    if (!showScroll && window.pageYOffset > 400) {
+      setShowScroll(true);
+    } else if (showScroll && window.pageYOffset <= 400) {
+      setShowScroll(false);
+    }
+  };
+
+  window.addEventListener("scroll", checkScrollTop);
 
   useEffect(() => {
     async function fetchData() {
@@ -32,10 +44,18 @@ const MovieScreen = ({ match }) => {
       prev === "Add a review" ? "Back" : "Add a review"
     );
   };
+  useEffect(() => {
+    window.scrollBy(0, 4000);
+  }, [watchAll]);
+
+  const watchAllHandler = () => {
+    setWatchAll(true);
+    console.log(window.pageYOffset);
+  };
 
   return (
     <>
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "flex", flexWrap: "wrap" }}>
         {movie && (
           <div id="movie_area">
             <div id="movie">
@@ -61,12 +81,30 @@ const MovieScreen = ({ match }) => {
             </div>
           </div>
         )}
-        {addReview ? <ReviewsBox id={id} /> : <Reviews id={id} />}
+        {addReview ? (
+          <ReviewsBox id={id} />
+        ) : (
+          <Reviews id={id} watchAll={watchAll} />
+        )}
         <div className="btns_area">
+          <button
+            style={
+              addReview ? { visibility: "hidden" } : { visibility: "visible" }
+            }
+            onClick={watchAllHandler}
+          >
+            Watch all reviews
+          </button>
           <button onClick={addReviewHandler}>{addRevBack}</button>
-          <button>Watch all reviews</button>
         </div>
       </div>
+      <a href="#" style={{ display: showScroll ? "flex" : "none" }}>
+        <img
+          className="top_btn"
+          src="\img\chevron-upwards-arrow.png"
+          alt="top"
+        />
+      </a>
     </>
   );
 };
