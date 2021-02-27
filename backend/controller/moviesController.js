@@ -6,6 +6,7 @@ const getMovies = async (req, res, next) => {
     const { q } = req.body;
     const API_KEY = process.env.API_KEY;
     const URL = `http://www.omdbapi.com/?apikey=${API_KEY}&s=${q}&type=movie`;
+
     const config = {
       headers: { "Content-Type": "application/json" },
     };

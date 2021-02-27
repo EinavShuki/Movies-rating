@@ -1,13 +1,13 @@
 #star {
   position: absolute;
   z-index: 1;
-  width: 18%;
+  max-width: 8rem;
   border: rgba(255, 255, 255, 0.349) solid 3px;
   padding: 0.5rem;
   /*text-align: center;*/
   border-radius: 80px;
   transform: translateX(-50%);
-  top: -17%;
+  bottom: 18rem;
 }
 
 .reviews_box {
@@ -24,6 +24,9 @@
   margin: 7rem 0 0 8rem;
   text-align: center;
   padding: 5.6rem 2rem;
+}
+#review_p p {
+  margin-top: 1rem;
 }
 
 #right_q {

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "../../src/mediaIndex.css";
 import MoviesBox from "../components/MoviesBox";
 
 const HomeScreen = () => {
-  const [q, setQuery] = useState("woman");
+  const [q, setQuery] = useState("princess");
   const [movies, setMovies] = useState(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
@@ -17,7 +18,12 @@ const HomeScreen = () => {
     }
   };
 
-  window.addEventListener("scroll", checkScrollTop);
+  useEffect(() => {
+    window.addEventListener("scroll", checkScrollTop);
+    return () => {
+      window.removeEventListener("scroll", checkScrollTop);
+    };
+  }, []);
 
   let textInput = React.createRef();
 
@@ -29,28 +35,36 @@ const HomeScreen = () => {
 
   useEffect(() => {
     setLoading(true);
+    const source = axios.CancelToken.source();
     async function fetchMovies() {
       try {
         const config = {
           headers: { "Content-Type": "application/json" },
         };
-        const { data } = await axios.post("/api/movies", { q }, config);
-        console.log(data);
+        const { data } = await axios.post(
+          "/api/movies",
+          { q },
+          { cancelToken: source.token, config }
+        );
+        // console.log(data);
         if (data.Response === "False") {
           if (data.Error === "Incorrect IMDb ID.")
             setError("Cannot find movie");
+          else if (data.Error === "Too many results.")
+            setError("Too many results..Please be more specific");
           else setError(data.Error);
         } else setError("");
         setMovies(data.Search);
         setLoading(false);
+        localStorage.setItem("query", JSON.stringify(q));
       } catch (error) {
         console.log(error);
       }
     }
     fetchMovies();
-    q
-      ? localStorage.setItem("query", JSON.stringify(q))
-      : localStorage.setItem("query", JSON.stringify("woman"));
+    return () => {
+      source.cancel("Cancelling in cleanup in Home");
+    };
   }, [q]);
 
   return (

@@ -8,9 +8,26 @@
 #table_reviews td {
   text-overflow: ellipsis;
   word-wrap: break-word;
-  min-width: 12rem;
-  max-width: 60rem;
+  width: max-content;
+  max-width: 70rem;
   padding: 1rem;
   font-size: 1.5rem;
   background-color: rgba(8, 92, 126, 0.308);
+}
+
+@media (max-width: 700px) {
+  #table_reviews th {
+    font-size: 1rem;
+    background-color: rgba(30, 28, 168, 0.377);
+    padding: 0.3rem;
+    font-weight: bold;
+    min-width: 10rem;
+  }
+
+  #table_reviews td {
+    padding: 0.3rem;
+    font-size: 1rem;
+    max-width: 15rem;
+    background-color: rgba(8, 92, 126, 0.308);
+  }
 }

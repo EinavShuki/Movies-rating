@@ -11,12 +11,12 @@ label {
 }
 #rating_area {
   position: relative;
-  top: -35%;
+  bottom: 16rem;
 }
 #rating {
   margin: 0.5rem;
   height: 5vh;
-  width: 11vw;
+  width: 11rem;
   font-size: 1.5rem;
   border: none;
 }
@@ -58,6 +58,14 @@ textarea::-webkit-scrollbar {
 #submit:hover {
   color: black;
   background-color: rgba(26, 197, 77, 0.63);
+}
+#review_submit_msg {
+  position: relative;
+  top: 10rem;
+  right: -13rem;
+  color: green;
+  font-size: 1.5rem;
+  text-align: center;
 }
 #submit_ico {
   width: 5%;

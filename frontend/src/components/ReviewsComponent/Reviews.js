@@ -1,4 +1,5 @@
 import "./Reviews.css";
+import "./mediaReviews.css";
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import Rating from "../Rating/Rating";
@@ -19,18 +20,26 @@ const Reviews = ({ id, watchAll }) => {
   }, [revToShow]);
 
   useEffect(() => {
+    const ourRequest = axios.CancelToken.source();
     async function fetchReviews() {
       try {
         const config = {
           Headers: { "Content-Type": "aplication/json" },
         };
-        const { data } = await axios.get(`/api/movies/${id}/reviews`, config);
+        const { data } = await axios.get(
+          `/api/movies/${id}/reviews`,
+          { cancelToken: ourRequest.token },
+          config
+        );
         setReviews(data.reviews);
       } catch (err) {
         console.log(err);
       }
     }
     fetchReviews();
+    return () => {
+      ourRequest.cancel("Cancelling in cleanup in Reviews");
+    };
   }, []);
 
   useEffect(() => {
@@ -69,7 +78,7 @@ const Reviews = ({ id, watchAll }) => {
                   style={{
                     position: "relative",
                     textAlign: "end",
-                    marginTop: "1rem",
+
                     fontStyle: "italic",
                     paddingRight: "0.3rem",
                   }}

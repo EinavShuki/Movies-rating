@@ -38,8 +38,8 @@ h2 {
 }
 
 #home_name,
-:visited,
-:link {
+#home_name:visited,
+#home_name:link {
   display: inline;
   font-family: "Ubuntu", sans-serif;
   margin-left: 1.3rem;
@@ -52,7 +52,6 @@ h2 {
 
 #home_name:hover {
   margin-left: 1rem;
-  font-size: 3rem;
   color: rgb(255, 255, 255);
 }
 #search_form {
@@ -217,25 +216,28 @@ button:hover {
   }
 }
 .arl {
+  text-align: start;
   color: black;
   font-size: 1.7rem;
+  font-weight: bold;
+  display: inline;
+  cursor: pointer;
+  text-decoration: none;
 }
 .arl:hover {
-  font-size: 1.8rem;
+  margin-left: 0.4rem;
 }
 
-#add_review {
-  min-width: 4vw;
-  max-height: 7vh;
-  margin-top: 1rem;
-}
 img {
   width: 100%;
   max-height: 370px;
   object-fit: contain;
 }
+.movies_grid {
+  text-align: center;
+}
 .movies {
-  margin-left: 5rem;
+  /* margin: 5rem; */
   display: inline-grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   padding: 2rem 0;
@@ -280,28 +282,31 @@ img {
   border-radius: 15px;
   color: rgba(94, 13, 13, 0.767);
 }
-#movie_area {
-  padding: 2rem 0;
-}
-#movie {
+
+/* movie_screen */
+#movie_screen_body {
   display: flex;
-  font-size: 1.3rem;
+  flex-wrap: wrap;
+}
+
+#movie {
+  margin-top: 3rem;
+  display: flex;
   color: white;
   justify-content: space-between;
 }
 #one_img {
   margin-left: 5rem;
-  min-height: 75vh;
-  width: 22vw;
+  min-height: 40.5rem;
+  width: 22rem;
   object-fit: fill;
 }
 
 #details {
   overflow: scroll;
   scroll-behavior: smooth;
-  max-height: 75vh;
-  width: 22vw;
-  width: 22vw;
+  max-height: 40.5rem;
+  width: 22rem;
   font-size: 1.5rem;
   background-color: rgba(187, 196, 212, 0.726);
   border-radius: 0 8px 8px 0;
@@ -318,10 +323,10 @@ img {
 }
 .btns_area {
   display: flex;
-  height: 10%;
+  height: 8%;
   position: absolute;
   top: 36rem;
-  right: 13rem;
+  right: 7rem;
   align-items: center;
   justify-content: space-between;
 }

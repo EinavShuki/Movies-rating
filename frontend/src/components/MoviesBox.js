@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 const MoviesBox = ({ movies }) => {
   return (
-    <div>
+    <div className="movies_grid">
       {movies.map((movie, index) => (
         <div className="movies zoomIn" key={index}>
           <Link className="arl" to={`/movie/${movie.imdbID}`}>
@@ -17,6 +18,7 @@ const MoviesBox = ({ movies }) => {
                   : movie.Poster
               }
             />
+
             <p style={{ marginBottom: "1rem" }}>
               {movie.Title} | {movie.Year}
             </p>

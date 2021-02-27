@@ -1,10 +1,11 @@
 import React from "react";
 import Rating from "../Rating/Rating";
 import "./AllReviews.css";
+
 const AllReviews = ({ reviews }) => {
   return (
     <div>
-      {reviews.length > 0 && (
+      {reviews.length > 0 ? (
         <table id="table_reviews">
           <thead>
             <tr>
@@ -27,6 +28,8 @@ const AllReviews = ({ reviews }) => {
             })}
           </tbody>
         </table>
+      ) : (
+        <h1>No reviews yet..</h1>
       )}
     </div>
   );

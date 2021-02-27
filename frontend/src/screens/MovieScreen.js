@@ -12,72 +12,71 @@ const MovieScreen = ({ match }) => {
   const [watchAll, setWatchAll] = useState(false);
   const [showScroll, setShowScroll] = useState(false);
 
-  const checkScrollTop = () => {
-    if (!showScroll && window.pageYOffset > 400) {
-      setShowScroll(true);
-    } else if (showScroll && window.pageYOffset <= 400) {
-      setShowScroll(false);
-    }
-  };
-
-  window.addEventListener("scroll", checkScrollTop);
+  useEffect(() => {
+    window.scrollBy(0, 400);
+  }, [watchAll]);
 
   useEffect(() => {
+    if (movie) setRating(movie.imdbRating);
+  }, [movie]);
+
+  useEffect(() => {
+    const ourRequest = axios.CancelToken.source();
     async function fetchData() {
       try {
         const config = {
           headers: { "Content-Type": "application/json" },
         };
-        const { data } = await axios.get(`/api/movies/${id}`, config);
-        console.log(data);
+        const { data } = await axios.get(`/api/movies/${id}`, {
+          cancelToken: ourRequest.token,
+          config,
+        });
+        // console.log(data);
         setMovie(data);
-        setRating(movie.Ratings[0].Value.split("/", 1)[0]);
       } catch (err) {
         console.log(err);
       }
     }
     fetchData();
+    return () => {
+      ourRequest.cancel("Cancelling in cleanup in MovieScreen");
+    };
   }, []);
+
   const addReviewHandler = () => {
     setAddReview((prev) => !prev);
     setaddRevBack((prev) =>
       prev === "Add a review" ? "Back" : "Add a review"
     );
   };
-  useEffect(() => {
-    window.scrollBy(0, 4000);
-  }, [watchAll]);
 
   const watchAllHandler = () => {
     setWatchAll(true);
-    console.log(window.pageYOffset);
+    // console.log(window.pageYOffset);
   };
 
   return (
     <>
-      <div style={{ display: "flex", flexWrap: "wrap" }}>
+      <div id="movie_screen_body">
         {movie && (
-          <div id="movie_area">
-            <div id="movie">
-              {" "}
-              <img
-                id="one_img"
-                alt={movie.Title}
-                src={
-                  movie.Poster === "N/A"
-                    ? "https://placehold.it/198x264&text=Image+Not+Found"
-                    : movie.Poster
-                }
-              />
-              <div id="details">
-                <h3>
-                  {movie.Title} | {movie.Year}
-                </h3>
-                <Rating value={rating / 2} />
-                <p>Plot: {movie.Plot}</p>
-                <p>Actors: {movie.Actors}</p>
-                <p>Writer/s: {movie.Writer} </p>
-              </div>
+          <div id="movie">
+            <img
+              id="one_img"
+              alt={movie.Title}
+              src={
+                movie.Poster === "N/A"
+                  ? "https://placehold.it/198x264&text=Image+Not+Found"
+                  : movie.Poster
+              }
+            />
+            <div id="details">
+              <h3>
+                {movie.Title} | {movie.Year}
+              </h3>
+              <Rating value={rating / 2} />
+              <p>Plot: {movie.Plot}</p>
+              <p>Actors: {movie.Actors}</p>
+              <p>Writer/s: {movie.Writer} </p>
             </div>
           </div>
         )}

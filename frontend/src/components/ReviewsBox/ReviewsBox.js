@@ -1,4 +1,5 @@
 import "./ReviewsBox.css";
+import "./mediaReviewBox.css";
 import React, { useState } from "react";
 import axios from "axios";
 
@@ -40,7 +41,7 @@ const ReviewsBox = ({ id }) => {
     }
   };
   const textareaHandler = (e) => {
-    console.log(e.target.value.length);
+    // console.log(e.target.value.length);
     if (e.target.value.length === 200) setMessage("Limit text to 200 tabs");
     setComment(e.target.value);
   };
@@ -51,18 +52,7 @@ const ReviewsBox = ({ id }) => {
         <div className="loader_submit"></div>
       ) : submitted ? (
         <>
-          <h1
-            style={{
-              position: "relative",
-              top: "10rem",
-              right: "-13rem",
-              color: "green",
-              fontSize: "1.5rem",
-              textAlign: "center",
-            }}
-          >
-            the review was submitted successfuly
-          </h1>
+          <h1 id="review_submit_msg">the review was submitted successfuly</h1>
           <img id="submit_ico" src="\img\checked.png" />
         </>
       ) : (

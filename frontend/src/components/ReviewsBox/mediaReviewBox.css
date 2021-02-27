@@ -1,0 +1,57 @@
+@media (max-width: 700px) {
+  #form_rev {
+    position: relative;
+    top: 4rem;
+    margin-bottom: 3rem;
+  }
+  label {
+    font-size: 1rem;
+  }
+  #review_box {
+    transform: translateX(3%);
+  }
+  #rating_area {
+    position: relative;
+    bottom: 16rem;
+  }
+  #rating {
+    width: 11rem;
+    font-size: 1rem;
+  }
+  .name,
+  textarea {
+    font-size: 1rem;
+    padding: 0.3rem;
+    border-bottom: 1.5px solid black;
+    width: 80%;
+  }
+  textarea {
+    width: 100%;
+  }
+  #submit {
+    padding: 0.5rem;
+    font-size: 1.3rem;
+  }
+
+  #review_submit_msg {
+    top: 2.5rem;
+    left: 2rem;
+    font-size: 1rem;
+  }
+  #submit_ico {
+    width: 10%;
+    top: 5rem;
+    right: 8rem;
+  }
+  .loader_submit {
+    border: 8px solid #f3f3f327; /* Light grey */
+    border-top: 8px solid #238bd16c; /* Blue */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    left: 10rem;
+    top: 32rem;
+  }
+}
