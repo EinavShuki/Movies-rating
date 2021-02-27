@@ -33,7 +33,7 @@ h2 {
 
 #navBar {
   background-color: rgba(3, 39, 83, 0.514);
-  height: 8.5vh;
+  min-height: 8.5vh;
   padding-top: 0.3rem;
 }
 

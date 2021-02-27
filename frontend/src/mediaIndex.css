@@ -44,6 +44,12 @@
   .movies_grid {
     margin-left: 4rem;
   }
+  .loader {
+    top: 35%;
+    right: 40%;
+    width: 10rem;
+    height: 10rem;
+  }
 
   /*movie_screen*/
   #one_img {
@@ -121,6 +127,12 @@
   }
   .movies_grid {
     margin-left: 4rem;
+  }
+  .loader {
+    top: 35%;
+    right: 30%;
+    width: 10rem;
+    height: 10rem;
   }
 
   /* MOVIE_SCREEN */
