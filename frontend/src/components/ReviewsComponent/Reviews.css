@@ -1,29 +1,30 @@
 #star {
   position: absolute;
   z-index: 1;
-  max-width: 8rem;
+  max-width: 7rem;
   border: rgba(255, 255, 255, 0.349) solid 3px;
   padding: 0.5rem;
   /*text-align: center;*/
   border-radius: 80px;
   transform: translateX(-50%);
-  bottom: 18rem;
+  bottom: 13rem;
 }
 
 .reviews_box {
   position: relative;
-  height: 40vh;
-  width: 40vw;
-  font-size: 1.8rem;
+  height: 16rem;
+  width: 30rem;
+  max-width: 30rem;
+  font-size: 1.5rem;
   background-color: rgba(255, 255, 255, 0.548);
   -webkit-box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.36);
   -moz-box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.36);
   box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.36);
   border-radius: 15px;
   color: black;
-  margin: 7rem 0 0 8rem;
+  margin: 5rem 0 0 8rem;
   text-align: center;
-  padding: 5.6rem 2rem;
+  padding: 4rem 2rem;
 }
 #review_p p {
   margin-top: 1rem;
@@ -78,5 +79,5 @@
   height: fit-content;
   padding: 2rem;
   bottom: -30%;
-  left: 2.5rem;
+  left: 2rem;
 }

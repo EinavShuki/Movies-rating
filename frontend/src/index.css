@@ -290,24 +290,24 @@ img {
 }
 
 #movie {
-  margin-top: 3rem;
+  margin-top: 2rem;
   display: flex;
   color: white;
   justify-content: space-between;
 }
 #one_img {
-  margin-left: 5rem;
-  min-height: 40.5rem;
-  width: 22rem;
+  margin-left: 3rem;
+  min-height: 27rem;
+  width: 17rem;
   object-fit: fill;
 }
 
 #details {
   overflow: scroll;
   scroll-behavior: smooth;
-  max-height: 40.5rem;
-  width: 22rem;
-  font-size: 1.5rem;
+  max-height: 27rem;
+  width: 17rem;
+  font-size: 1.1rem;
   background-color: rgba(187, 196, 212, 0.726);
   border-radius: 0 8px 8px 0;
   padding: 0.5rem 0.5rem;
@@ -323,10 +323,10 @@ img {
 }
 .btns_area {
   display: flex;
-  height: 8%;
+  height: 4rem;
   position: absolute;
-  top: 36rem;
-  right: 7rem;
+  top: 26rem;
+  right: 3rem;
   align-items: center;
   justify-content: space-between;
 }

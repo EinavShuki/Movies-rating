@@ -4,10 +4,10 @@
     bottom: 80%;
   }
   .reviews_box {
-    height: 30vh;
-    width: 90vw;
+    height: 16rem;
+    max-width: 30rem;
     font-size: 1.5rem;
-    margin: 3rem 0 4rem 3rem;
+    margin: 5rem 0 4rem 3rem;
     padding: 4rem 2rem 1rem 2rem;
   }
   #review_p p {
@@ -49,5 +49,10 @@
 
   #all_rev_table {
     left: -1rem;
+  }
+}
+@media (max-width: 400px) {
+  .reviews_box {
+    height: 24vh;
   }
 }

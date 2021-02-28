@@ -1,15 +1,14 @@
 #table_reviews th {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   background-color: rgba(30, 28, 168, 0.377);
-  padding: 1rem;
+  padding: 0.5rem;
   font-weight: bold;
 }
 
 #table_reviews td {
   text-overflow: ellipsis;
   word-wrap: break-word;
-  width: max-content;
-  max-width: 70rem;
+  max-width: 50rem;
   padding: 1rem;
   font-size: 1.5rem;
   background-color: rgba(8, 92, 126, 0.308);

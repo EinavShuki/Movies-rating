@@ -1,13 +1,13 @@
 #form_rev {
   position: relative;
-  top: 7.7rem;
+  top: 7.6rem;
 }
 label {
   font-size: 1.5rem;
 }
 #review_box {
   position: relative;
-  transform: translateX(50%);
+  transform: translateX(30%);
 }
 #rating_area {
   position: relative;
@@ -17,13 +17,13 @@ label {
   margin: 0.5rem;
   height: 5vh;
   width: 11rem;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   border: none;
 }
 
 .name,
 textarea {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: rgba(0, 0, 255, 0.616);
   font-weight: bold;
   scroll-behavior: smooth;
@@ -52,7 +52,7 @@ textarea::-webkit-scrollbar {
   padding: 1rem;
   background-color: rgba(72, 150, 95, 0.418);
   min-width: 4vw;
-  height: 10%;
+  height: 5rem;
   text-align: center;
 }
 #submit:hover {
@@ -62,7 +62,7 @@ textarea::-webkit-scrollbar {
 #review_submit_msg {
   position: relative;
   top: 10rem;
-  right: -13rem;
+  right: -10rem;
   color: green;
   font-size: 1.5rem;
   text-align: center;
@@ -70,8 +70,8 @@ textarea::-webkit-scrollbar {
 #submit_ico {
   width: 5%;
   position: relative;
-  top: 7rem;
-  right: 4rem;
+  top: 6rem;
+  right: 7rem;
 }
 
 .loader_submit {
