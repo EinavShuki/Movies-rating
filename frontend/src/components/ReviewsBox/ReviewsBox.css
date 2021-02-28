@@ -75,15 +75,15 @@ textarea::-webkit-scrollbar {
 }
 
 .loader_submit {
-  border: 16px solid #f3f3f327; /* Light grey */
-  border-top: 16px solid #238bd16c; /* Blue */
+  border: 10px solid #f3f3f327; /* Light grey */
+  border-top: 10px solid #238bd16c; /* Blue */
   border-radius: 50%;
   animation: spin 1s linear infinite;
   position: absolute;
   width: 10rem;
   height: 10rem;
-  left: 80rem;
-  top: 15rem;
+  left: 55rem;
+  top: 11rem;
 }
 @keyframes spin {
   0% {

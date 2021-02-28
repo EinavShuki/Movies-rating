@@ -229,8 +229,8 @@ button:hover {
 }
 
 img {
-  width: 100%;
-  max-height: 370px;
+  width: 80%;
+  max-height: 350px;
   object-fit: contain;
 }
 .movies_grid {
@@ -240,7 +240,7 @@ img {
   /* margin: 5rem; */
   display: inline-grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  padding: 2rem 0;
+  padding: 1rem 0 2rem 0;
 }
 .zoomIn {
   -webkit-animation-name: zoomIn;
@@ -272,8 +272,8 @@ img {
 }
 
 .movie-info {
-  height: 500px;
-  max-width: 300px;
+  height: 420px;
+  max-width: 270px;
   font-size: 1.4rem;
   font-weight: bold;
   text-align: center;
