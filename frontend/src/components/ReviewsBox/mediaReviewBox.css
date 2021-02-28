@@ -2,7 +2,7 @@
   #form_rev {
     position: relative;
     top: 4rem;
-    margin-bottom: 3rem;
+    margin-bottom: 5rem;
   }
   label {
     font-size: 1rem;
@@ -12,7 +12,7 @@
   }
   #rating_area {
     position: relative;
-    bottom: 16rem;
+    bottom: 19rem;
   }
   #rating {
     width: 11rem;
@@ -30,7 +30,8 @@
   }
   #submit {
     padding: 0.5rem;
-    font-size: 1.3rem;
+    font-size: 1rem;
+    height: 3rem;
   }
 
   #review_submit_msg {

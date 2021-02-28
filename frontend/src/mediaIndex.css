@@ -149,7 +149,7 @@
   }
 
   .btns_area {
-    height: 8%;
+    height: 3rem;
     position: absolute;
     top: 45rem;
     right: 3rem;
@@ -170,6 +170,6 @@
 }
 @media (max-width: 370px) {
   .btns_area {
-    top: 41rem;
+    top: 42rem;
   }
 }
