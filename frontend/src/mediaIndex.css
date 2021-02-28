@@ -162,6 +162,11 @@
     height: 80%;
     padding: 0.3rem;
   }
+  .top_btn {
+    width: 2rem;
+    right: 0.3rem;
+    bottom: 0.5rem;
+  }
 }
 @media (max-width: 400px) {
   .btns_area {
