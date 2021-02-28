@@ -52,7 +52,7 @@ textarea::-webkit-scrollbar {
   padding: 1rem;
   background-color: rgba(72, 150, 95, 0.418);
   min-width: 4vw;
-  height: 5rem;
+  height: 4rem;
   text-align: center;
 }
 #submit:hover {
