@@ -151,7 +151,7 @@
   .btns_area {
     height: 3rem;
     position: absolute;
-    top: 45rem;
+    top: 45.5rem;
     right: 3rem;
     align-items: center;
     justify-content: space-between;
@@ -171,16 +171,6 @@
 @media (max-width: 400px) {
   .btns_area {
     top: 43rem;
-  }
-  .top_btn {
-    width: 2rem;
-    right: 0.3rem;
-    bottom: 0.5rem;
-  }
-}
-@media (max-width: 370px) {
-  .btns_area {
-    top: 42rem;
   }
   .top_btn {
     width: 2rem;
