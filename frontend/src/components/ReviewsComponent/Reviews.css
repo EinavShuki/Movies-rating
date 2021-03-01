@@ -1,9 +1,10 @@
 #star {
   position: absolute;
   z-index: 1;
-  max-width: 7rem;
+  width: 7rem;
+  height: 7rem;
   border: rgba(255, 255, 255, 0.349) solid 3px;
-  padding: 0.5rem;
+  padding: 0.7rem;
   /*text-align: center;*/
   border-radius: 80px;
   transform: translateX(-50%);
@@ -15,7 +16,7 @@
   height: 16rem;
   width: 30rem;
   max-width: 30rem;
-  font-size: 1.5rem;
+  font-size: 1rem;
   background-color: rgba(255, 255, 255, 0.548);
   -webkit-box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.36);
   -moz-box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.36);
@@ -26,27 +27,28 @@
   text-align: center;
   padding: 3rem 2rem;
 }
-#review_p p {
-  margin-top: 0.3rem;
-}
 
 #right_q {
-  position: absolute;
-  width: 1.5rem;
   position: relative;
-  right: -40%;
+  width: 1.5rem;
+  height: min-content;
+  left: 45%;
 }
 #left_q {
-  position: absolute;
+  position: relative;
   width: 1.5rem;
+  height: min-content;
   transform: scale(-1);
-  left: 5%;
-  top: 27%;
+  right: 45%;
+  top: -34%;
 }
 #review_p {
   overflow: hidden;
   text-overflow: ellipsis;
   word-wrap: break-word;
+}
+#review_p p {
+  margin-top: 0.8rem;
 }
 .fadeIn {
   -webkit-animation-name: fadeIn;

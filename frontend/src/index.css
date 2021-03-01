@@ -215,19 +215,23 @@ button:hover {
     transform: translateY(0px);
   }
 }
+.movies_display {
+  position: relative;
+  text-align: center;
+  margin: 0 3rem;
+}
 
 img {
   width: 15rem;
+  height: 20rem;
   max-height: 20rem;
   object-fit: contain;
 }
 .movies_grid {
   text-align: center;
-}
-.movies {
-  display: inline-grid;
+  display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  padding: 0rem 0 2rem 0;
+  row-gap: 2rem;
 }
 
 .zoomIn {
@@ -277,6 +281,14 @@ img {
 .arl {
   cursor: pointer;
   text-decoration: none;
+}
+#more_btn {
+  margin: 1rem;
+  padding: 1rem;
+  background-color: rgba(94, 13, 13, 0.767);
+}
+#more_btn:hover {
+  background-color: rgba(94, 13, 13, 0.562);
 }
 
 /* movie_screen */

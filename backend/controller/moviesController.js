@@ -3,9 +3,9 @@ import Reviews from "../models/reviewsModel.js";
 
 const getMovies = async (req, res, next) => {
   try {
-    const { q } = req.body;
+    const { q, page } = req.body;
     const API_KEY = process.env.API_KEY;
-    const URL = `http://www.omdbapi.com/?apikey=${API_KEY}&s=${q}&type=movie`;
+    const URL = `http://www.omdbapi.com/?apikey=${API_KEY}&s=${q}&type=movie&page=${page}`;
 
     const config = {
       headers: { "Content-Type": "application/json" },

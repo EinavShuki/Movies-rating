@@ -4,11 +4,15 @@ import "../../src/mediaIndex.css";
 import MoviesBox from "../components/MoviesBox";
 
 const HomeScreen = () => {
-  const [q, setQuery] = useState("princess");
-  const [movies, setMovies] = useState(null);
+  const [q, setQuery] = useState("fight club");
+  const [movies, setMovies] = useState([]);
+  const [totalres, setTotalres] = useState(0);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const [showScroll, setShowScroll] = useState(false);
+  const [scrollTo, setScrollTo] = useState(0);
+  const [page, setPage] = useState(1);
+  const [noMore, setNoMore] = useState(false);
 
   const checkScrollTop = () => {
     if (!showScroll && window.pageYOffset > 400) {
@@ -26,11 +30,14 @@ const HomeScreen = () => {
   }, []);
 
   let textInput = React.createRef();
+  let btn = React.createRef();
 
   const searchHandler = (e) => {
     e.preventDefault();
     setQuery(textInput.current.value);
     textInput.current.value = "";
+    setPage(1);
+    setScrollTo(0);
   };
 
   useEffect(() => {
@@ -43,10 +50,10 @@ const HomeScreen = () => {
         };
         const { data } = await axios.post(
           "/api/movies",
-          { q },
+          { q, page },
           { cancelToken: source.token, config }
         );
-        // console.log(data);
+        setTotalres(data.totalResults);
         if (data.Response === "False") {
           if (data.Error === "Incorrect IMDb ID.")
             setError("Cannot find movie");
@@ -54,8 +61,14 @@ const HomeScreen = () => {
             setError("Too many results..Please be more specific");
           else setError(data.Error);
         } else setError("");
-        setMovies(data.Search);
+        if (page !== 1)
+          data.Search.map((movie) => {
+            setMovies((prev) => [...prev, movie]);
+          });
+        else setMovies(data.Search);
+
         setLoading(false);
+        window.scrollBy(0, scrollTo);
         localStorage.setItem("query", JSON.stringify(q));
       } catch (error) {
         console.log(error);
@@ -65,7 +78,21 @@ const HomeScreen = () => {
     return () => {
       source.cancel("Cancelling in cleanup in Home");
     };
-  }, [q]);
+  }, [q, page]);
+
+  useEffect(() => {
+    if (
+      movies &&
+      movies.length > 0 &&
+      Number(totalres) === Number(movies.length + 1)
+    )
+      setNoMore(true);
+  }, [movies]);
+
+  const moreHandler = () => {
+    setPage((prev) => prev + 1);
+    setScrollTo((prev) => prev + 1500);
+  };
 
   return (
     <>
@@ -105,7 +132,17 @@ const HomeScreen = () => {
             <span>n</span>
             <span>g</span>
           </div>
-          {movies && <MoviesBox movies={movies} />}
+          <div className="movies_display">
+            {movies && <MoviesBox movies={movies} />}
+            <button
+              id="more_btn"
+              style={{ display: noMore ? "none" : "inline" }}
+              onClick={moreHandler}
+              ref={btn}
+            >
+              More
+            </button>
+          </div>
         </>
       ) : (
         <h1

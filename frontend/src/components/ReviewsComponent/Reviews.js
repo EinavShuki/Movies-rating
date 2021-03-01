@@ -51,45 +51,42 @@ const Reviews = ({ id, watchAll }) => {
       <div className="reviews_box">
         {" "}
         <img src="\img\star.png" id="star" />
-        <div className="single_review">
-          <div id="review_p">
-            {revToShow.length > 1 ? (
-              <span>
-                <Rating
-                  className="fadeIn"
-                  id="rev_rating"
-                  value={revToShow[index].rating}
-                />
-                <div className="review_q">
-                  <img src="\img\quotes-right.png" id="left_q" />
-                  <h4
-                    className="fadeIn"
-                    style={{
-                      textAlign: "center",
-                      padding: "0.5rem",
-                    }}
-                  >
-                    {revToShow[index].comment}
-                  </h4>
-                  <img src="\img\quotes-right.png" id="right_q" />
-                </div>
-                <p
+        <div id="review_p">
+          {revToShow.length > 1 ? (
+            <span>
+              <Rating
+                className="fadeIn"
+                id="rev_rating"
+                value={revToShow[index].rating}
+              />
+              <>
+                <img src="\img\quotes-right.png" id="left_q" />
+                <h4
                   className="fadeIn"
                   style={{
-                    position: "relative",
-                    textAlign: "end",
-
-                    fontStyle: "italic",
-                    paddingRight: "0.3rem",
+                    textAlign: "center",
+                    padding: "0.3rem",
                   }}
                 >
-                  {revToShow[index].name}
-                </p>
-              </span>
-            ) : (
-              <h3 style={{ textAlign: "center" }}>No highlight reviews yet</h3>
-            )}
-          </div>
+                  {revToShow[index].comment}
+                </h4>
+                <img src="\img\quotes-right.png" id="right_q" />
+              </>
+              <p
+                className="fadeIn"
+                style={{
+                  position: "relative",
+                  textAlign: "end",
+                  fontStyle: "italic",
+                  paddingRight: "0.3rem",
+                }}
+              >
+                {revToShow[index].name}
+              </p>
+            </span>
+          ) : (
+            <h3 style={{ textAlign: "center" }}>No highlight reviews yet</h3>
+          )}
         </div>
       </div>
       <div id="all_rev_table">

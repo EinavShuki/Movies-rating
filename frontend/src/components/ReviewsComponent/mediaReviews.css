@@ -5,8 +5,7 @@
   }
   .reviews_box {
     height: 16rem;
-    max-width: 30rem;
-    font-size: 1.5rem;
+    width: 30rem;
     margin: 5rem 0 5rem 3rem;
     padding: 4rem 2rem 1rem 2rem;
   }
@@ -32,7 +31,7 @@
   .reviews_box {
     height: 30vh;
     width: 90%;
-    font-size: 1rem;
+    font-size: 0.5rem;
     margin: 3rem 0 5rem 1rem;
     padding: 2.5rem 2rem 1rem 2rem;
   }
