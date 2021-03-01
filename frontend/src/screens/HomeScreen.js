@@ -4,7 +4,7 @@ import "../../src/mediaIndex.css";
 import MoviesBox from "../components/MoviesBox";
 
 const HomeScreen = () => {
-  const [q, setQuery] = useState("fight club");
+  const [q, setQuery] = useState("princess");
   const [movies, setMovies] = useState([]);
   const [totalres, setTotalres] = useState(0);
   const [error, setError] = useState("");
