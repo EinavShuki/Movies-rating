@@ -295,6 +295,7 @@ img {
 #movie_screen_body {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 #movie {
@@ -304,7 +305,7 @@ img {
   justify-content: space-between;
 }
 #one_img {
-  margin-left: 3rem;
+  /* margin-left: 3rem; */
   min-height: 27rem;
   width: 17rem;
   object-fit: fill;
