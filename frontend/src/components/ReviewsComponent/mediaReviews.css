@@ -1,6 +1,7 @@
 @media (max-width: 1100px) {
   #star {
-    max-width: 7rem;
+    width: 7rem;
+    height: 7rem;
     bottom: 80%;
   }
   .reviews_box {
@@ -25,13 +26,13 @@
 }
 @media (max-width: 700px) {
   #star {
-    max-width: 5rem;
+    width: 5rem;
+    height: 5rem;
     bottom: 80%;
   }
   .reviews_box {
     height: 30vh;
     width: 90%;
-    font-size: 0.5rem;
     margin: 3rem 0 5rem 1rem;
     padding: 2.5rem 2rem 1rem 2rem;
   }
@@ -52,6 +53,7 @@
 }
 @media (max-width: 400px) {
   .reviews_box {
-    height: 11rem;
+    height: 13rem;
+    font-size: 0.7rem;
   }
 }
