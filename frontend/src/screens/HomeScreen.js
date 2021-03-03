@@ -15,9 +15,9 @@ const HomeScreen = () => {
   const [noMore, setNoMore] = useState(false);
 
   const checkScrollTop = () => {
-    if (!showScroll && window.pageYOffset > 400) {
+    if (!showScroll && window.pageYOffset > 500) {
       setShowScroll(true);
-    } else if (showScroll && window.pageYOffset <= 400) {
+    } else if (showScroll && window.pageYOffset <= 500) {
       setShowScroll(false);
     }
   };
@@ -100,7 +100,7 @@ const HomeScreen = () => {
         <input
           autoComplete="off"
           className="search_input"
-          placeholder="Movie name"
+          placeholder="Enter a movie name"
           type="text"
           ref={textInput}
         />{" "}

@@ -14,7 +14,7 @@ const getMovies = async (req, res, next) => {
 
     if (data) res.json(data);
     else {
-      res.status(404).json({ message: "movies are not found" });
+      res.status(404).json({ message: "Movies are not found" });
     }
   } catch (error) {
     console.log(error);
