@@ -17,9 +17,11 @@
   }
   #search_form {
     position: relative;
-    display: flex;
     margin: auto;
     height: 4rem;
+  }
+  #verify_msg {
+    margin: auto;
   }
   .search_input {
     min-height: 100%;
@@ -39,14 +41,12 @@
     font-size: 2.5rem;
     letter-spacing: 0.1em;
   }
-  .movies_display {
-    margin: 0;
+  #more_btn {
+    left: 45%;
   }
 
   /*movie_box*/
-  .movies_grid {
-    margin-left: 4rem;
-  }
+
   .loader {
     top: 35%;
     right: 40%;
@@ -101,7 +101,7 @@
 
   .search_input,
   .search_btn {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     width: 50%;
   }
   .search_btn {
@@ -113,11 +113,14 @@
     font-size: 1.1rem;
     letter-spacing: 0.1em;
   }
-  .movies_display {
-    margin: 0;
+  #more_btn {
+    left: 33%;
   }
 
   /*MOVIE_BOX*/
+  .movies_grid {
+    grid-template-columns: none;
+  }
   img {
     width: 85%;
     max-height: 375px;
@@ -128,14 +131,12 @@
     max-width: 240px;
     font-size: 1rem;
   }
-  .movies_grid {
-    margin-left: 4rem;
-  }
+
   .loader {
     top: 35%;
-    right: 30%;
-    width: 10rem;
-    height: 10rem;
+    left: 40%;
+    width: 5rem;
+    height: 5rem;
   }
 
   /* MOVIE_SCREEN */

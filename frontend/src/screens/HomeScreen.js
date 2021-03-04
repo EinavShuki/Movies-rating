@@ -13,6 +13,7 @@ const HomeScreen = () => {
   const [scrollTo, setScrollTo] = useState(0);
   const [page, setPage] = useState(1);
   const [noMore, setNoMore] = useState(false);
+  const [searchInputVer, setSearchInputVer] = useState("");
 
   const checkScrollTop = () => {
     if (!showScroll && window.pageYOffset > 500) {
@@ -30,7 +31,6 @@ const HomeScreen = () => {
   }, []);
 
   let textInput = React.createRef();
-  let btn = React.createRef();
 
   const searchHandler = (e) => {
     e.preventDefault();
@@ -38,6 +38,13 @@ const HomeScreen = () => {
     textInput.current.value = "";
     setPage(1);
     setScrollTo(0);
+  };
+  const checkinput = () => {
+    console.log(searchInputVer);
+    var english = /^[!A-Za-z0-9 ]*$/;
+    if (!textInput.current.value.match(english))
+      setSearchInputVer("Unexpacted letters");
+    else setSearchInputVer("");
   };
 
   useEffect(() => {
@@ -69,7 +76,7 @@ const HomeScreen = () => {
 
         setLoading(false);
         window.scrollBy(0, scrollTo);
-        localStorage.setItem("query", JSON.stringify(q));
+        // localStorage.setItem("query", JSON.stringify(q));
       } catch (error) {
         console.log(error);
       }
@@ -103,11 +110,17 @@ const HomeScreen = () => {
           placeholder="Enter a movie name"
           type="text"
           ref={textInput}
+          onChange={checkinput}
         />{" "}
-        <button className="search_btn" onClick={searchHandler}>
+        <button
+          disabled={searchInputVer !== ""}
+          className="search_btn"
+          onClick={searchHandler}
+        >
           <i className="fas fa-search"></i>
         </button>
       </form>
+      {searchInputVer !== "" && <h3 id="verify_msg">{searchInputVer}</h3>}
       {loading ? (
         <div className="loader"></div>
       ) : error === "" ? (
@@ -132,17 +145,14 @@ const HomeScreen = () => {
             <span>n</span>
             <span>g</span>
           </div>
-          <div className="movies_display">
-            {movies && <MoviesBox movies={movies} />}
-            <button
-              id="more_btn"
-              style={{ display: noMore ? "none" : "inline" }}
-              onClick={moreHandler}
-              ref={btn}
-            >
-              More
-            </button>
-          </div>
+          {movies && <MoviesBox movies={movies} />}
+          <button
+            id="more_btn"
+            style={{ display: noMore ? "none" : "inline" }}
+            onClick={moreHandler}
+          >
+            More
+          </button>
         </>
       ) : (
         <h1
