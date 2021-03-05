@@ -3,6 +3,7 @@
   top: 7.6rem;
 }
 label {
+  color: white;
   font-size: 1.5rem;
 }
 #review_box {
@@ -15,7 +16,7 @@ label {
 }
 #rating {
   margin: 0.5rem;
-  height: 5vh;
+  height: 2.5rem;
   width: 11rem;
   font-size: 1.3rem;
   border: none;
@@ -23,8 +24,8 @@ label {
 
 .name,
 textarea {
+  color: white;
   font-size: 1.3rem;
-  color: rgba(0, 0, 255, 0.616);
   font-weight: bold;
   scroll-behavior: smooth;
   display: block;
@@ -33,7 +34,7 @@ textarea {
   padding: 0.5rem;
   background-color: transparent;
   border: none;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid rgba(105, 4, 4, 0.712);
   min-width: 40%;
   width: 100%;
   resize: none;

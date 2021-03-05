@@ -29,7 +29,6 @@ const HomeScreen = () => {
       window.removeEventListener("scroll", checkScrollTop);
     };
   }, []);
-
   let textInput = React.createRef();
 
   const searchHandler = (e) => {
@@ -40,7 +39,6 @@ const HomeScreen = () => {
     setScrollTo(0);
   };
   const checkinput = () => {
-    console.log(searchInputVer);
     var english = /^[!A-Za-z0-9 ]*$/;
     if (!textInput.current.value.match(english))
       setSearchInputVer("Unexpacted letters");
@@ -73,7 +71,6 @@ const HomeScreen = () => {
             setMovies((prev) => [...prev, movie]);
           });
         else setMovies(data.Search);
-
         setLoading(false);
         window.scrollBy(0, scrollTo);
         // localStorage.setItem("query", JSON.stringify(q));
@@ -82,6 +79,7 @@ const HomeScreen = () => {
       }
     }
     fetchMovies();
+
     return () => {
       source.cancel("Cancelling in cleanup in Home");
     };
@@ -98,7 +96,7 @@ const HomeScreen = () => {
 
   const moreHandler = () => {
     setPage((prev) => prev + 1);
-    setScrollTo((prev) => prev + 1500);
+    setScrollTo((prev) => prev + window.pageYOffset);
   };
 
   return (
@@ -166,6 +164,7 @@ const HomeScreen = () => {
           {error}
         </h1>
       )}
+
       <a href="#" style={{ display: showScroll ? "flex" : "none" }}>
         <img
           className="top_btn"

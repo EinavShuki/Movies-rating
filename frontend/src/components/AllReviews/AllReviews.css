@@ -1,32 +1,29 @@
 #table_reviews th {
   font-size: 1.3rem;
-  background-color: rgba(30, 28, 168, 0.377);
+  background-color: rgba(105, 4, 4, 0.712);
   padding: 0.5rem;
   font-weight: bold;
 }
 
 #table_reviews td {
-  text-overflow: ellipsis;
-  word-wrap: break-word;
-  max-width: 50rem;
+  min-width: 7rem;
   padding: 1rem;
   font-size: 1.5rem;
-  background-color: rgba(8, 92, 126, 0.308);
+  background-color: rgba(0, 0, 0, 0.144);
 }
 
 @media (max-width: 700px) {
   #table_reviews th {
     font-size: 1rem;
-    background-color: rgba(30, 28, 168, 0.377);
     padding: 0.3rem;
     font-weight: bold;
-    min-width: 10rem;
   }
 
   #table_reviews td {
     padding: 0.3rem;
     font-size: 1rem;
-    max-width: 15rem;
-    background-color: rgba(8, 92, 126, 0.308);
+  }
+  #table_reviews td:nth-child(3) {
+    text-overflow: ellipsis;
   }
 }
