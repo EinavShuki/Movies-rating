@@ -36,13 +36,13 @@ textarea {
   border: none;
   border-bottom: 2px solid rgba(105, 4, 4, 0.712);
   min-width: 40%;
-  width: 100%;
+  width: 80%;
   resize: none;
   margin: 0.3rem 0;
   font-family: "Quicksand", sans-serif;
 }
 textarea {
-  width: 150%;
+  width: 100%;
 }
 
 textarea::-webkit-scrollbar {

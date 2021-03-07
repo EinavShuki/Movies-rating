@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "../../src/mediaIndex.css";
-import MoviesBox from "../components/MoviesBox";
+import React, { useEffect, useState } from "react";
+import MoviesScroll from "../components/MovieScroll/MovieScroll";
+import SearchForm from "../components/SearchForm/SearchForm";
 
 const HomeScreen = () => {
-  const [q, setQuery] = useState("princess");
-  const [movies, setMovies] = useState([]);
-  const [totalres, setTotalres] = useState(0);
+  const [Shrekmovies, setShrekMovies] = useState([]);
+  const [Greasemovies, setGreaseMovies] = useState([]);
+  const [Batmanmovies, setBatmanMovies] = useState([]);
+  const [WonderWomanmovies, setWonderWomanMovies] = useState([]);
+  const [HarryPotterMovies, setHarryPotterMovies] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const [showScroll, setShowScroll] = useState(false);
-  const [scrollTo, setScrollTo] = useState(0);
-  const [page, setPage] = useState(1);
-  const [noMore, setNoMore] = useState(false);
-  const [searchInputVer, setSearchInputVer] = useState("");
 
   const checkScrollTop = () => {
     if (!showScroll && window.pageYOffset > 500) {
@@ -29,21 +27,6 @@ const HomeScreen = () => {
       window.removeEventListener("scroll", checkScrollTop);
     };
   }, []);
-  let textInput = React.createRef();
-
-  const searchHandler = (e) => {
-    e.preventDefault();
-    setQuery(textInput.current.value);
-    textInput.current.value = "";
-    setPage(1);
-    setScrollTo(0);
-  };
-  const checkinput = () => {
-    var english = /^[!A-Za-z0-9 ]*$/;
-    if (!textInput.current.value.match(english))
-      setSearchInputVer("Unexpacted letters");
-    else setSearchInputVer("");
-  };
 
   useEffect(() => {
     setLoading(true);
@@ -53,27 +36,83 @@ const HomeScreen = () => {
         const config = {
           headers: { "Content-Type": "application/json" },
         };
-        const { data } = await axios.post(
+
+        //Shrek
+        const res1 = await axios.post(
           "/api/movies",
-          { q, page },
+          { q: "Shrek", page: 1 },
           { cancelToken: source.token, config }
         );
-        setTotalres(data.totalResults);
-        if (data.Response === "False") {
-          if (data.Error === "Incorrect IMDb ID.")
+        if (res1.data.Response === "False") {
+          if (res1.data.Error === "Incorrect IMDb ID.")
             setError("Cannot find movie");
-          else if (data.Error === "Too many results.")
+          else if (res1.data.Error === "Too many results.")
             setError("Too many results..Please be more specific");
-          else setError(data.Error);
+          else setError(res1.data.Error);
         } else setError("");
-        if (page !== 1)
-          data.Search.map((movie) => {
-            setMovies((prev) => [...prev, movie]);
-          });
-        else setMovies(data.Search);
+        setShrekMovies(res1.data.Search);
+
+        //Wonder Woman
+        const res2 = await axios.post(
+          "/api/movies",
+          { q: "Wonder woman", page: 1 },
+          { cancelToken: source.token, config }
+        );
+        if (res2.data.Response === "False") {
+          if (res2.data.Error === "Incorrect IMDb ID.")
+            setError("Cannot find movie");
+          else if (res2.data.Error === "Too many results.")
+            setError("Too many results..Please be more specific");
+          else setError(res2.data.Error);
+        } else setError("");
+        setWonderWomanMovies(res2.data.Search);
+
+        //Grease
+        const res3 = await axios.post(
+          "/api/movies",
+          { q: "Grease", page: 1 },
+          { cancelToken: source.token, config }
+        );
+        if (res3.data.Response === "False") {
+          if (res3.data.Error === "Incorrect IMDb ID.")
+            setError("Cannot find movie");
+          else if (res3.data.Error === "Too many results.")
+            setError("Too many results..Please be more specific");
+          else setError(res3.data.Error);
+        } else setError("");
+        setGreaseMovies(res3.data.Search);
+
+        //Batman
+        const res4 = await axios.post(
+          "/api/movies",
+          { q: "Batman", page: 1 },
+          { cancelToken: source.token, config }
+        );
+        if (res4.data.Response === "False") {
+          if (res4.data.Error === "Incorrect IMDb ID.")
+            setError("Cannot find movie");
+          else if (res4.data.Error === "Too many results.")
+            setError("Too many results..Please be more specific");
+          else setError(res4.data.Error);
+        } else setError("");
+        setBatmanMovies(res4.data.Search);
+
+        //Harry Potter
+        const res5 = await axios.post(
+          "/api/movies",
+          { q: "Harry potter", page: 1 },
+          { cancelToken: source.token, config }
+        );
+        if (res5.data.Response === "False") {
+          if (res5.data.Error === "Incorrect IMDb ID.")
+            setError("Cannot find movie");
+          else if (res5.data.Error === "Too many results.")
+            setError("Too many results..Please be more specific");
+          else setError(res5.data.Error);
+        } else setError("");
+        setHarryPotterMovies(res5.data.Search);
+
         setLoading(false);
-        window.scrollBy(0, scrollTo);
-        // localStorage.setItem("query", JSON.stringify(q));
       } catch (error) {
         console.log(error);
       }
@@ -83,42 +122,10 @@ const HomeScreen = () => {
     return () => {
       source.cancel("Cancelling in cleanup in Home");
     };
-  }, [q, page]);
-
-  useEffect(() => {
-    if (
-      movies &&
-      movies.length > 0 &&
-      Number(totalres) === Number(movies.length + 1)
-    )
-      setNoMore(true);
-  }, [movies]);
-
-  const moreHandler = () => {
-    setPage((prev) => prev + 1);
-    setScrollTo((prev) => prev + window.pageYOffset);
-  };
-
+  }, []);
   return (
     <>
-      <form rel="search" id="search_form">
-        <input
-          autoComplete="off"
-          className="search_input"
-          placeholder="Enter a movie name"
-          type="text"
-          ref={textInput}
-          onChange={checkinput}
-        />{" "}
-        <button
-          disabled={searchInputVer !== ""}
-          className="search_btn"
-          onClick={searchHandler}
-        >
-          <i className="fas fa-search"></i>
-        </button>
-      </form>
-      {searchInputVer !== "" && <h3 id="verify_msg">{searchInputVer}</h3>}
+      <SearchForm />
       {loading ? (
         <div className="loader"></div>
       ) : error === "" ? (
@@ -143,14 +150,15 @@ const HomeScreen = () => {
             <span>n</span>
             <span>g</span>
           </div>
-          {movies && <MoviesBox movies={movies} />}
-          <button
-            id="more_btn"
-            style={{ display: noMore ? "none" : "inline" }}
-            onClick={moreHandler}
-          >
-            More
-          </button>
+          {Shrekmovies && <MoviesScroll movies={Shrekmovies} name="Shrek" />}
+          {WonderWomanmovies && (
+            <MoviesScroll movies={WonderWomanmovies} name="Wonder Woman" />
+          )}
+          {Greasemovies && <MoviesScroll movies={Greasemovies} name="Grease" />}
+          {Batmanmovies && <MoviesScroll movies={Batmanmovies} name="Batman" />}
+          {HarryPotterMovies && (
+            <MoviesScroll movies={HarryPotterMovies} name="Harry Potter" />
+          )}
         </>
       ) : (
         <h1

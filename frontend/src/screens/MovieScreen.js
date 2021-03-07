@@ -103,7 +103,9 @@ const MovieScreen = ({ match }) => {
         <div className="btns_area">
           <button
             style={
-              addReview ? { visibility: "hidden" } : { visibility: "visible" }
+              addReview
+                ? { visibility: "hidden", width: "3px" }
+                : { visibility: "visible" }
             }
             onClick={watchAllHandler}
           >

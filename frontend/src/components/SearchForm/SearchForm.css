@@ -1,0 +1,20 @@
+#search_form {
+  position: absolute;
+  display: flex;
+  top: 0.3rem;
+  margin-left: 40%;
+  min-width: 40%;
+  height: 3rem;
+}
+.search_input,
+.search_btn {
+  font-family: "Montserrat", sans-serif;
+  position: relative;
+  top: 0;
+  border: none;
+  font-size: 2rem;
+}
+.search_btn {
+  width: 10%;
+  font-size: 1.5rem;
+}
