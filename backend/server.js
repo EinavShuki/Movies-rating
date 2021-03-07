@@ -12,7 +12,7 @@ connectDB();
 
 app.use(express.json());
 
-console.log("in server");
+// console.log("in server");
 
 app.use("/api/movies", moviesRoutes);
 

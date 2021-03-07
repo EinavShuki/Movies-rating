@@ -9,7 +9,7 @@ const MoviesScroll = ({ movies, name }) => {
 
   const arrowRightHandler = () => {
     ref.current.scrollLeft += 500;
-    console.log(ref.current.scrollLeft);
+    // console.log(ref.current.scrollLeft);
     setArrowLeft("fas fa-chevron-circle-left");
     if (ref.current.scrollLeft >= 1000) {
       setArrowRight("fas fa-chevron-circle-right hide");
@@ -18,7 +18,7 @@ const MoviesScroll = ({ movies, name }) => {
 
   const arrowLeftHandler = () => {
     ref.current.scrollLeft -= 500;
-    console.log(ref.current.scrollLeft);
+    // console.log(ref.current.scrollLeft);
     setArrowRight("fas fa-chevron-circle-right");
     if (ref.current.scrollLeft <= 500) {
       setArrowLeft("fas fa-chevron-circle-left hide");

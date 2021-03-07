@@ -79,10 +79,11 @@ const SearchScreen = ({ match }) => {
     if (
       movies &&
       movies.length > 0 &&
-      Number(totalres) === Number(movies.length + 1)
+      Number(totalres) === Number(movies.length)
     )
       setNoMore(true);
-  }, [movies]);
+    else setNoMore(false);
+  }, [movies, q]);
 
   const moreHandler = () => {
     setPage((prev) => prev + 1);
