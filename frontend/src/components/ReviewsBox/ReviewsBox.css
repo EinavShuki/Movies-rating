@@ -81,10 +81,11 @@ textarea::-webkit-scrollbar {
   border-radius: 50%;
   animation: spin 1s linear infinite;
   position: absolute;
-  width: 10rem;
-  height: 10rem;
-  left: 55rem;
-  top: 11rem;
+  width: 5rem;
+  height: 3rem;
+  top: 10rem;
+  right: 7rem;
+  padding: 5rem;
 }
 @keyframes spin {
   0% {

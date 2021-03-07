@@ -78,7 +78,7 @@
     font-size: 1.3rem;
   }
   .movies_scroll {
-    column-gap: 3rem;
+    justify-content: space-between;
   }
   .movie-info_scroll {
     height: 18rem;
