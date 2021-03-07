@@ -29,10 +29,10 @@ const MoviesScroll = ({ movies, name }) => {
       <i id="left_arrow" className={arrowLeft} onClick={arrowLeftHandler}></i>
       <div className="movies_container" ref={ref}>
         <h2 className="movies_title">{name}</h2>
-        <div className="movies">
+        <div className="movies_scroll">
           {movies.map((movie, index) => (
             <Link key={index} className="arl" to={`/movie/${movie.imdbID}`}>
-              <div className="movie-info">
+              <div className="movie-info_scroll">
                 <img
                   alt={movie.Title}
                   src={
