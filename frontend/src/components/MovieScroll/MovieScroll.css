@@ -78,7 +78,7 @@
     font-size: 1.3rem;
   }
   .movies_scroll {
-    justify-content: space-between;
+    margin: 1rem;
   }
   .movie-info_scroll {
     height: 18rem;
