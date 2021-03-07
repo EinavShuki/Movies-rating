@@ -72,10 +72,10 @@ img {
 
 @media (max-width: 700px) {
   .movies_container {
-    -webkit-overflow-scrolling: touch;
+    overflow-x: scroll;
   }
   .movies_title {
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
   .movies {
     column-gap: 2rem;

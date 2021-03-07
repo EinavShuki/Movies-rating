@@ -18,3 +18,43 @@
   width: 10%;
   font-size: 1.5rem;
 }
+
+@media (max-width: 1100px) {
+  #search_form {
+    position: relative;
+    margin: auto;
+    height: 4rem;
+  }
+  #verify_msg {
+    margin: auto;
+  }
+  .search_input {
+    min-height: 100%;
+  }
+
+  .search_input,
+  .search_btn {
+    font-size: 1.7rem;
+    min-width: 70%;
+  }
+  .search_btn {
+    min-width: 20%;
+  }
+}
+@media (max-width: 700px) {
+  #search_form {
+    height: 4rem;
+  }
+  .search_input {
+    min-height: 95%;
+  }
+
+  .search_input,
+  .search_btn {
+    font-size: 1.4rem;
+    width: 50%;
+  }
+  .search_btn {
+    width: 10%;
+  }
+}
