@@ -27,8 +27,8 @@ const MoviesScroll = ({ movies, name }) => {
   return (
     <div className="above">
       <i id="left_arrow" className={arrowLeft} onClick={arrowLeftHandler}></i>
+      <h2 className="movies_title">{name}</h2>
       <div className="movies_container" ref={ref}>
-        <h2 className="movies_title">{name}</h2>
         <div className="movies_scroll">
           {movies.map((movie, index) => (
             <Link key={index} className="arl" to={`/movie/${movie.imdbID}`}>

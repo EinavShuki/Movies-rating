@@ -6,7 +6,8 @@
   display: inline-block;
   font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 1rem;
+  left: 2.5rem;
+  top: 1.5rem;
   padding: 1rem;
   background-color: rgba(105, 4, 4, 0.267);
 }
@@ -76,14 +77,15 @@
   }
   .movies_title {
     font-size: 1.3rem;
+    left: 2.5rem;
+    top: 2rem;
   }
-  .movies_scroll {
-    margin: 1rem;
-  }
+
   .movie-info_scroll {
     height: 18rem;
     width: 10rem;
     font-size: 0.7rem;
+    margin-right: 1rem;
   }
   .movie-info_scroll img {
     width: 8rem;
