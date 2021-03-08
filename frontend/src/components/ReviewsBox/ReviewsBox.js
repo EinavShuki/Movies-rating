@@ -48,7 +48,7 @@ const ReviewsBox = ({ id }) => {
 
   return (
     <>
-      {!loading ? (
+      {loading ? (
         <div className="loader_submit"></div>
       ) : submitted ? (
         <>
