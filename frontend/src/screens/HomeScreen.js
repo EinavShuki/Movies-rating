@@ -29,100 +29,67 @@ const HomeScreen = () => {
   }, []);
 
   useEffect(() => {
-    setLoading(true);
     const source = axios.CancelToken.source();
-    async function fetchMovies() {
-      try {
-        const config = {
-          headers: { "Content-Type": "application/json" },
-        };
 
-        //Shrek
-        const res1 = await axios.post(
-          "/api/movies",
-          { q: "Shrek", page: 1 },
-          { cancelToken: source.token, config }
-        );
-        if (res1.data.Response === "False") {
-          if (res1.data.Error === "Incorrect IMDb ID.")
-            setError("Cannot find movie");
-          else if (res1.data.Error === "Too many results.")
-            setError("Too many results..Please be more specific");
-          else setError(res1.data.Error);
-        } else setError("");
-        setShrekMovies(res1.data.Search);
+    const config = {
+      headers: { "Content-Type": "application/json" },
+    };
+    setLoading(true);
+    setError("");
+    const promises = [];
+    promises.push(
+      axios.post(
+        "/api/movies",
+        { q: "Shrek", page: 1 },
+        { cancelToken: source.token, config }
+      )
+    );
+    promises.push(
+      axios.post(
+        "/api/movies",
+        { q: "Wonder woman", page: 1 },
+        { cancelToken: source.token, config }
+      )
+    );
+    promises.push(
+      axios.post(
+        "/api/movies",
+        { q: "Grease", page: 1 },
+        { cancelToken: source.token, config }
+      )
+    );
+    promises.push(
+      axios.post(
+        "/api/movies",
+        { q: "Batman", page: 1 },
+        { cancelToken: source.token, config }
+      )
+    );
+    promises.push(
+      axios.post(
+        "/api/movies",
+        { q: "Harry potter", page: 1 },
+        { cancelToken: source.token, config }
+      )
+    );
 
-        //Wonder Woman
-        const res2 = await axios.post(
-          "/api/movies",
-          { q: "Wonder woman", page: 1 },
-          { cancelToken: source.token, config }
-        );
-        if (res2.data.Response === "False") {
-          if (res2.data.Error === "Incorrect IMDb ID.")
-            setError("Cannot find movie");
-          else if (res2.data.Error === "Too many results.")
-            setError("Too many results..Please be more specific");
-          else setError(res2.data.Error);
-        } else setError("");
-        setWonderWomanMovies(res2.data.Search);
-
-        //Grease
-        const res3 = await axios.post(
-          "/api/movies",
-          { q: "Grease", page: 1 },
-          { cancelToken: source.token, config }
-        );
-        if (res3.data.Response === "False") {
-          if (res3.data.Error === "Incorrect IMDb ID.")
-            setError("Cannot find movie");
-          else if (res3.data.Error === "Too many results.")
-            setError("Too many results..Please be more specific");
-          else setError(res3.data.Error);
-        } else setError("");
-        setGreaseMovies(res3.data.Search);
-
-        //Batman
-        const res4 = await axios.post(
-          "/api/movies",
-          { q: "Batman", page: 1 },
-          { cancelToken: source.token, config }
-        );
-        if (res4.data.Response === "False") {
-          if (res4.data.Error === "Incorrect IMDb ID.")
-            setError("Cannot find movie");
-          else if (res4.data.Error === "Too many results.")
-            setError("Too many results..Please be more specific");
-          else setError(res4.data.Error);
-        } else setError("");
-        setBatmanMovies(res4.data.Search);
-
-        //Harry Potter
-        const res5 = await axios.post(
-          "/api/movies",
-          { q: "Harry potter", page: 1 },
-          { cancelToken: source.token, config }
-        );
-        if (res5.data.Response === "False") {
-          if (res5.data.Error === "Incorrect IMDb ID.")
-            setError("Cannot find movie");
-          else if (res5.data.Error === "Too many results.")
-            setError("Too many results..Please be more specific");
-          else setError(res5.data.Error);
-        } else setError("");
-        setHarryPotterMovies(res5.data.Search);
-
-        setLoading(false);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    fetchMovies();
-
+    Promise.all(promises)
+      .then((values) => {
+        setShrekMovies(values[0].data.Search);
+        setWonderWomanMovies(values[1].data.Search);
+        setGreaseMovies(values[2].data.Search);
+        setBatmanMovies(values[3].data.Search);
+        setHarryPotterMovies(values[4].data.Search);
+      })
+      .catch(() => {
+        setError("There was an error");
+      })
+      .finally(setLoading(false));
     return () => {
       source.cancel("Cancelling in cleanup in Home");
     };
   }, []);
+
   return (
     <>
       <SearchForm />
