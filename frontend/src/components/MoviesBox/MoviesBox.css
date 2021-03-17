@@ -1,5 +1,7 @@
 .movies_grid {
   display: grid;
+  position: relative;
+  top: 3rem;
   justify-content: center;
   grid-template-columns: repeat(auto-fill, minmax(300px, 0.1fr));
   row-gap: 2rem;

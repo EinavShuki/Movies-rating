@@ -97,26 +97,6 @@ const SearchScreen = ({ match }) => {
         <div className="loader"></div>
       ) : error === "" ? (
         <>
-          <div className="title">
-            <span>W</span>
-            <span>e</span>
-            <span>l</span>
-            <span>c</span>
-            <span>o</span>
-            <span>m</span>
-            <span>e</span> <span>t</span>
-            <span>o</span> <span>M</span>
-            <span>o</span>
-            <span>v</span>
-            <span>i</span>
-            <span>e</span>
-            <span>s</span> <span>R</span>
-            <span>a</span>
-            <span>t</span>
-            <span>i</span>
-            <span>n</span>
-            <span>g</span>
-          </div>
           {movies && <MoviesBox movies={movies} />}
           <button
             id="more_btn"
@@ -140,11 +120,7 @@ const SearchScreen = ({ match }) => {
       )}
 
       <a href="#" style={{ display: showScroll ? "flex" : "none" }}>
-        <img
-          className="top_btn"
-          src="\img\chevron-upwards-arrow.png"
-          alt="top"
-        />
+        <i className="fas fa-chevron-circle-up top_btn"></i>
       </a>
     </>
   );

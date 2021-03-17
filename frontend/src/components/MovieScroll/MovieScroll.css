@@ -55,7 +55,7 @@
   top: 50%;
   right: 3%;
   z-index: 2;
-  color: rgba(255, 255, 255, 0.801);
+  color: rgba(255, 255, 255);
   cursor: pointer;
 }
 #left_arrow {
@@ -64,13 +64,14 @@
   top: 50%;
   left: 3%;
   z-index: 2;
-  color: rgba(255, 255, 255, 0.801);
+  color: rgba(255, 255, 255);
   cursor: pointer;
 }
 .hide {
   visibility: hidden;
 }
 
+/* mobile */
 @media (max-width: 700px) {
   .movies_container {
     overflow-x: scroll;

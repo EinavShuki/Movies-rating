@@ -287,14 +287,12 @@ img {
   }
 }
 .top_btn {
-  width: 4%;
+  font-size: 3rem;
   position: fixed;
-  margin: auto;
-  right: 2%;
+  right: 5%;
   bottom: 4%;
   cursor: pointer;
-  opacity: 0.7;
-  color: red;
+  color: rgb(235, 0, 0);
 }
 .top_btn:hover {
   opacity: 1;

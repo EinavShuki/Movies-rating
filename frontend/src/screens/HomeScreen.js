@@ -141,11 +141,7 @@ const HomeScreen = () => {
       )}
 
       <a href="#" style={{ display: showScroll ? "flex" : "none" }}>
-        <img
-          className="top_btn"
-          src="\img\chevron-upwards-arrow.png"
-          alt="top"
-        />
+        <i className="fas fa-chevron-circle-up top_btn"></i>
       </a>
     </>
   );
