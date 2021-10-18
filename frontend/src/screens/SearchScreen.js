@@ -48,7 +48,9 @@ const SearchScreen = ({ match }) => {
           if (data.Error === "Incorrect IMDb ID.")
             setError("Cannot find movie");
           else if (data.Error === "Too many results.")
-            setError("Too many results..Please be more specific");
+            setError("Too many results... Please try to be more specific");
+          else if (data.Error === "Movie not found!")
+            setError("Oops...Movie Is Not Found");
           else setError(data.Error);
         } else setError("");
         if (page !== 1)

@@ -34,10 +34,10 @@ const getSingleMovie = async (req, res, next) => {
 
     if (data) res.json(data);
     else {
-      res.status(404).json({ message: "movie not found" });
+      res.status(404).json({ message: "movie is not found" });
     }
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
   next();
 };

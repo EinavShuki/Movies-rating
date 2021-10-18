@@ -5,7 +5,7 @@ import SearchForm from "../components/SearchForm/SearchForm";
 
 const HomeScreen = () => {
   const [Shrekmovies, setShrekMovies] = useState([]);
-  const [Greasemovies, setGreaseMovies] = useState([]);
+  const [littleWomenMovies, setlittleWomenMovies] = useState([]);
   const [Batmanmovies, setBatmanMovies] = useState([]);
   const [WonderWomanmovies, setWonderWomanMovies] = useState([]);
   const [HarryPotterMovies, setHarryPotterMovies] = useState([]);
@@ -54,7 +54,7 @@ const HomeScreen = () => {
     promises.push(
       axios.post(
         "/api/movies",
-        { q: "Grease", page: 1 },
+        { q: "little women", page: 1 },
         { cancelToken: source.token, config }
       )
     );
@@ -77,7 +77,7 @@ const HomeScreen = () => {
       .then((values) => {
         setShrekMovies(values[0].data.Search);
         setWonderWomanMovies(values[1].data.Search);
-        setGreaseMovies(values[2].data.Search);
+        setlittleWomenMovies(values[2].data.Search);
         setBatmanMovies(values[3].data.Search);
         setHarryPotterMovies(values[4].data.Search);
       })
@@ -121,7 +121,9 @@ const HomeScreen = () => {
           {WonderWomanmovies && (
             <MoviesScroll movies={WonderWomanmovies} name="Wonder Woman" />
           )}
-          {Greasemovies && <MoviesScroll movies={Greasemovies} name="Grease" />}
+          {littleWomenMovies && (
+            <MoviesScroll movies={littleWomenMovies} name="Little Women" />
+          )}
           {Batmanmovies && <MoviesScroll movies={Batmanmovies} name="Batman" />}
           {HarryPotterMovies && (
             <MoviesScroll movies={HarryPotterMovies} name="Harry Potter" />
