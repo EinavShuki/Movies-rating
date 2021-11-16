@@ -1,7 +1,7 @@
 import axios from "axios";
 import Reviews from "../models/reviewsModel.js";
 
-const getMovies = async (req, res, next) => {
+const getMovies = async (req, res) => {
   try {
     const { q, page } = req.body;
     const API_KEY = process.env.API_KEY;
@@ -19,10 +19,9 @@ const getMovies = async (req, res, next) => {
   } catch (error) {
     console.log(error);
   }
-  next();
 };
 
-const getSingleMovie = async (req, res, next) => {
+const getSingleMovie = async (req, res) => {
   try {
     const id = req.params.id;
     const API_KEY = process.env.API_KEY;
@@ -39,9 +38,8 @@ const getSingleMovie = async (req, res, next) => {
   } catch (error) {
     console.error(error);
   }
-  next();
 };
-const getMovieReviews = async (req, res, next) => {
+const getMovieReviews = async (req, res) => {
   try {
     const id = req.params.id;
     const reviews = await Reviews.findOne({ movie: id });
@@ -49,9 +47,8 @@ const getMovieReviews = async (req, res, next) => {
   } catch (error) {
     console.log(error);
   }
-  next();
 };
-const setMovieReviews = async (req, res, next) => {
+const setMovieReviews = async (req, res) => {
   try {
     const { name, rating, comment } = req.body;
     const id = req.params.id;
@@ -79,7 +76,6 @@ const setMovieReviews = async (req, res, next) => {
   } catch (error) {
     console.log(error);
   }
-  next();
 };
 
 export { getMovies, getSingleMovie, getMovieReviews, setMovieReviews };
